@@ -19,6 +19,10 @@ setup_cache() {
   
   debug 'Configuring npm to use wercker cache'
   npm config set cache "$WERCKER_CACHE_DIR/wercker/npm"
+  
+  debug 'Creating $WERCKER_CACHE_DIR/wercker/node_modules'
+  mkdir -p "$WERCKER_CACHE_DIR/wercker/node_modules"
+  ln -s "$WERCKER_CACHE_DIR/wercker/node_modules"
 }
 
 clear_cache() {
@@ -29,6 +33,9 @@ clear_cache() {
   debug 'Creating $WERCKER_CACHE_DIR/wercker/npm'
   mkdir -p "$WERCKER_CACHE_DIR/wercker/npm"
   printf keep > "$WERCKER_CACHE_DIR/wercker/npm/.keep"
+  
+  debug 'Creating $WERCKER_CACHE_DIR/wercker/node_modules'
+  rm -rf "$WERCKER_CACHE_DIR/wercker/node_modules/*"
 }
 
 npm_install() {
