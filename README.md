@@ -27,6 +27,10 @@ The MIT License (MIT)
 
 # Changelog
 
+## 1.1.5
+
+- Also cache `node_modules` directory
+
 ## 1.1.4
 
 - Ensure cache get's stored
